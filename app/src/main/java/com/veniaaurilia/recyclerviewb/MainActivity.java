@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         _recyclerView1 = findViewById(R.id.recyclerView1);
         _txtMahasiswaCount = findViewById(R.id.txtMahasiswaCount);
 
+        initAddButton();
         loadRecyclerView();
     }
 
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String mahasiswaCount = "Total Mahasiswa :  " + ma.getItemCount();
                 _txtMahasiswaCount.setText(mahasiswaCount);
+
+                initAddButton();
             }
 
             @Override
@@ -62,5 +67,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void initAddButton() {
+        _addButton = findViewById(R.id.addButton);
+        _addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddMahasiswaActivity.class);
+                startActivity(intent);
+
+                loadRecyclerView();
+            }
+
+        });
     }
 }
