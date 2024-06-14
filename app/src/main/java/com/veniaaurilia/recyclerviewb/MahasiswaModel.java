@@ -2,12 +2,13 @@ package com.veniaaurilia.recyclerviewb;
 
 public class MahasiswaModel {
 
-    private String NIM , Nama ,JenisKelamin ,JP;
-    public MahasiswaModel() {
+    private String NIM, Nama, JenisKelamin, JP;
 
+    public MahasiswaModel(){}
+
+    public String getNIM() {
+        return NIM;
     }
-
-    public String getNIM() { return NIM;}
 
     public void setNIM(String NIM) {
         this.NIM = NIM;

@@ -13,17 +13,17 @@ import java.util.List;
 public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaViewHolder> {
 
     private List<MahasiswaModel> _mahasiswaModelList;
-    public MahasiswaAdapter (List<MahasiswaModel> mahasiswaModelList)
-    {
-        this._mahasiswaModelList = mahasiswaModelList;
+
+    public MahasiswaAdapter(List<MahasiswaModel> _mahasiswaModelList) {
+        this._mahasiswaModelList = _mahasiswaModelList;
     }
+
     @NonNull
     @Override
-    public MahasiswaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-    {
+    public MahasiswaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(R.layout.list_mahasiswa, parent, false);
-        return  new MahasiswaViewHolder(v);
+        View v = inflater.inflate(R.layout.list_mahasiswa,parent,false);
+        return new MahasiswaViewHolder(v);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaViewHolder> 
         MahasiswaModel mm = _mahasiswaModelList.get(position);
 
         holder._jkImageView.setImageResource(R.drawable.boy);
-        if (mm.getJenisKelamin().toLowerCase().equals("perempuan")) {
+        if (mm.getJenisKelamin().toLowerCase().equals("perempuan")){
             holder._jkImageView.setImageResource(R.drawable.girl);
         }
 
@@ -43,27 +43,21 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaViewHolder> 
         holder._jkTextView.setText(mm.getJenisKelamin());
 
         String jp = mm.getJP();
-        jp = jp.substring(0, 2);
+        jp = jp.substring(0,2);
         holder._jpTextView.setText(jp);
 
-        if (jp.equals("TI"))
-        {
+        if (jp.equals("TI")){
             holder._jpTextView.setBackgroundColor(Color.BLUE);
-        }
-        else if (jp.equals("SI"))
-        {
+        } else if (jp.equals("SI")) {
             holder._jpTextView.setBackgroundColor(Color.RED);
-        }
-        else {
+        }else {
             holder._jpTextView.setBackgroundColor(Color.GRAY);
         }
-
     }
 
     @Override
-    public int getItemCount()
-    {
-        int count = (_mahasiswaModelList !=null) ? _mahasiswaModelList.size() : 0;
+    public int getItemCount() {
+        int count = (_mahasiswaModelList != null) ? _mahasiswaModelList.size():0;
         return count;
     }
 }
